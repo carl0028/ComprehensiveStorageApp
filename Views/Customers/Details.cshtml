@@ -1,0 +1,27 @@
+﻿@model ComprehensiveStorageApp.Models.CustomerViewModel
+
+<h2>Customer Details</h2>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Email</dt>
+        <dd class="col-sm-10">@Model.Email</dd>
+        <dt class="col-sm-2">Address</dt>
+        <dd class="col-sm-10">@Model.Address</dd>
+        <dt class="col-sm-2">Phone Number</dt>
+        <dd class="col-sm-10">@Model.PhoneNumber</dd>
+        @if (!string.IsNullOrEmpty(Model.ProfilePictureUrl))
+        {
+            <dt class="col-sm-2">Profile Picture</dt>
+            <dd class="col-sm-10">
+                <img src="@Model.ProfilePictureUrl" alt="@Model.Name" class="img-thumbnail" style="max-width: 200px;" />
+            </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-partitionKey="@Model.PartitionKey" asp-route-rowKey="@Model.RowKey">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

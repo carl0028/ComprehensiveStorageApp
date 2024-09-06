@@ -1,0 +1,23 @@
+﻿@model IEnumerable<string> // Assuming you pass a list of file names from the controller
+
+<h2>List of Contracts</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<ul>
+    @foreach (var fileName in Model)
+    {
+        <li>
+            @fileName
+            <a asp-action="DownloadContract" asp-route-fileName="@fileName">Download</a> |
+            <a asp-action="DeleteContract" asp-route-fileName="@fileName" onclick="return confirm('Are you sure you want to delete this contract?')">Delete</a>
+        </li>
+    }
+</ul>

@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Upload Contract";
+}
+
+<h2>Upload Contract</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+<form asp-action="UploadContract" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="contractFile">Select Contract File:</label>
+        <input type="file" id="contractFile" name="contractFile" class="form-control-file" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>

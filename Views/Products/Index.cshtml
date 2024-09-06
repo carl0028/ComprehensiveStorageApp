@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ComprehensiveStorageApp.Models.ProductViewModel>
+
+<h2>Products</h2>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <h3>@product.Name</h3>
+            <img src="@product.ImageUrl" alt="@product.Name" class="img-fluid" />
+            <p>@product.Description</p>
+            <div>
+                <a asp-action="Edit" asp-route-partitionKey="@product.PartitionKey" asp-route-rowKey="@product.RowKey">Edit</a> |
+                <a asp-action="Details" asp-route-partitionKey="@product.PartitionKey" asp-route-rowKey="@product.RowKey">Details</a> |
+                <a asp-action="Delete" asp-route-partitionKey="@product.PartitionKey" asp-route-rowKey="@product.RowKey">Delete</a>
+            </div>
+        </div>
+    }
+</div>
+
+<a asp-action="Create">Create New Product</a>
